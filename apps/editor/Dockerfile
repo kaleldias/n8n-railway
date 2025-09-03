@@ -9,7 +9,7 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=40s --retries=3 \
 # Copia entrypoint e a CA do Postgres
 COPY entrypoint.sh /n8n/editor/entrypoint.sh
 COPY pg-ca.pem /home/node/.n8n/pg-ca.pem
-RUN chmod +x /n8n/editor/entrypoint.sh
+RUN chmod +x /n8n/editor/entrypoint.sh && \
     chown node:node /home/node/.n8n/pg-ca.pem
 
 USER node

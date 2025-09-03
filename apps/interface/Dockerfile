@@ -11,7 +11,7 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=40s --retries=3 \
   CMD curl -fsS http://127.0.0.1:5678/healthz || exit 1
 
 # Entrypoint exclusivo da interface
-COPY apps/entrypoint.sh /apps-entrypoint.sh
+COPY apps/interface/entrypoint.sh /apps-entrypoint.sh
 RUN chmod +x /apps-entrypoint.sh
 
 # Volta para o usuário não-root padrão da imagem

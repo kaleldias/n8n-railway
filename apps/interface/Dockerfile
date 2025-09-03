@@ -11,8 +11,8 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=40s --retries=3 \
   CMD curl -fsS http://127.0.0.1:5678/healthz || exit 1
 
 # Entrypoint exclusivo da interface
-COPY docker/entrypoint.sh /docker-entrypoint.sh
-RUN chmod +x /docker-entrypoint.sh
+COPY apps/entrypoint.sh /apps-entrypoint.sh
+RUN chmod +x /apps-entrypoint.sh
 
 # Volta para o usuário não-root padrão da imagem
 USER node
@@ -21,6 +21,6 @@ USER node
 ENV N8N_USER_FOLDER="/home/node/.n8n" \
     N8N_PORT=5678
 
-ENTRYPOINT ["/docker-entrypoint.sh"]
+ENTRYPOINT ["/apps-entrypoint.sh"]
 # Sobe o editor/webhooks
 CMD ["n8n"]

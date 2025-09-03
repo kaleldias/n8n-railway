@@ -10,9 +10,10 @@ COPY entrypoint.sh /apps-entrypoint.sh
 RUN chmod +x /apps-entrypoint.sh
 
 USER node
+ENV PATH="/usr/local/bin:${PATH}"
 ENV N8N_USER_FOLDER="/home/node/.n8n" \
     N8N_PORT=5678
 
 EXPOSE 5678
 ENTRYPOINT ["/apps-entrypoint.sh"]
-CMD ["n8n"]     # <-- correto: entre aspas
+CMD ["n8n"] 

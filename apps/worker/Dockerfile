@@ -11,6 +11,7 @@ RUN chmod +x /apps-entrypoint.sh
 
 # Volta para usuário padrão
 USER node
+ENV PATH="/usr/local/bin:${PATH}"
 
 # Worker é stateless, mas alguns nodes ainda usam /home/node/.n8n em runtime
 ENV N8N_USER_FOLDER="/home/node/.n8n"

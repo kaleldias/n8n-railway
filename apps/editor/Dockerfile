@@ -6,8 +6,11 @@ RUN apk add --no-cache curl ca-certificates
 HEALTHCHECK --interval=30s --timeout=5s --start-period=40s --retries=3 \
   CMD curl -fsS http://127.0.0.1:5678/healthz || exit 1
 
+# Copia entrypoint e a CA do Postgres
 COPY entrypoint.sh /n8n/editor/entrypoint.sh
+COPY pg-ca.pem /home/node/.n8n/pg-ca.pem
 RUN chmod +x /n8n/editor/entrypoint.sh
+    chown node:node /home/node/.n8n/pg-ca.pem
 
 USER node
 

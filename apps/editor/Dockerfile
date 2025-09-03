@@ -10,11 +10,6 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=40s --retries=3 \
 COPY entrypoint.sh /n8n/editor/entrypoint.sh
 RUN chmod +x /n8n/editor/entrypoint.sh
 
-# 2) Copia a CA para FORA do diretório que costuma ser volume
-#    (assim ela não some quando o volume monta)
-COPY pg-ca.pem /n8n/certs/pg-ca.pem
-RUN chown node:node /n8n/certs/pg-ca.pem
-
 USER node
 ENV N8N_USER_FOLDER="/home/node/.n8n" \
     N8N_PORT=5678

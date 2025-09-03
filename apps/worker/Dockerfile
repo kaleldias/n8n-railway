@@ -7,7 +7,7 @@ RUN apk add --no-cache ca-certificates
 
 # Entrypoint exclusivo do worker
 COPY entrypoint.sh /n8n/worker/entrypoint.sh
-RUN chmod +x /n8n/editor/entrypoint.sh
+RUN chmod +x /n8n/worker/entrypoint.sh
 
 # Volta para usuário padrão
 USER node

@@ -17,4 +17,4 @@ ENV PATH="/usr/local/bin:${PATH}"
 ENV N8N_USER_FOLDER="/home/node/.n8n"
 
 ENTRYPOINT ["/apps-entrypoint.sh"]
-CMD ["n8n", "worker"]   # Executa só o processador de fila
+

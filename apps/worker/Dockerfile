@@ -7,8 +7,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates
   && rm -rf /var/lib/apt/lists/*
 
 # Entrypoint do worker
-COPY docker/entrypoint-worker.sh /docker-entrypoint-worker.sh
-RUN chmod +x /docker-entrypoint-worker.sh
+COPY docker/entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
 
 # Volta para usuário padrão
 USER node
@@ -16,6 +16,6 @@ USER node
 # Pasta de dados (não precisa volume no worker)
 ENV N8N_USER_FOLDER="/home/node/.n8n"
 
-ENTRYPOINT ["/docker-entrypoint-worker.sh"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
 # Comando padrão do container do Worker
 CMD ["n8n", "worker"]

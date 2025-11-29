@@ -1,4 +1,4 @@
-FROM n8nio/n8n:1.116.2
+FROM n8nio/n8n:1.121.3
 
 USER root
 RUN apk add --no-cache curl ca-certificates

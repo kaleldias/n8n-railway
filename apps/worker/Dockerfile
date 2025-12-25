@@ -3,7 +3,13 @@ FROM n8nio/n8n:2.1.4
 
 # Instala certificados (útil para conexões HTTPS nos nodes)
 USER root
-RUN apk add --no-cache ca-certificates
+RUN if command -v apk >/dev/null 2>&1; then \
+      apk add --no-cache ca-certificates; \
+    else \
+      apt-get update && \
+      apt-get install -y --no-install-recommends ca-certificates && \
+      rm -rf /var/lib/apt/lists/*; \
+    fi
 
 # Entrypoint exclusivo do worker
 COPY entrypoint.sh /n8n/worker/entrypoint.sh

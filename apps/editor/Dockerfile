@@ -1,16 +1,10 @@
 FROM n8nio/n8n:2.1.4
 
 USER root
-RUN if command -v apk >/dev/null 2>&1; then \
-      apk add --no-cache curl ca-certificates; \
-    else \
-      apt-get update && \
-      apt-get install -y --no-install-recommends curl ca-certificates && \
-      rm -rf /var/lib/apt/lists/*; \
-    fi
+# Base image nao tem gerenciador de pacotes; evita instalar aqui.
 
 HEALTHCHECK --interval=30s --timeout=5s --start-period=40s --retries=3 \
-  CMD curl -fsS http://127.0.0.1:5678/healthz || exit 1
+  CMD node -e "const http=require('http');const req=http.get('http://127.0.0.1:5678/healthz',res=>{res.resume();process.exit(res.statusCode===200?0:1);});req.on('error',()=>process.exit(1));"
 
 # 1) Copia o entrypoint
 COPY entrypoint.sh /n8n/editor/entrypoint.sh

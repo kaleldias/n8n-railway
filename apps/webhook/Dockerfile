@@ -1,5 +1,5 @@
 # Serviço: Webhook (recebe somente /webhook/* e enfileira)
-FROM n8nio/n8n:2.28.5
+FROM n8nio/n8n:2.29.8
 
 # utilitários mínimos p/ healthcheck e TLS
 USER root

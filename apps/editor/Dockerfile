@@ -1,4 +1,4 @@
-FROM n8nio/n8n:2.29.8
+FROM n8nio/n8n:2.31.7
 
 USER root
 # Base image nao tem gerenciador de pacotes; evita instalar aqui.

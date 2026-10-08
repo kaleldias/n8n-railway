@@ -1,5 +1,5 @@
 # Imagem oficial do n8n
-FROM n8nio/n8n:2.39.5
+FROM n8nio/n8n:2.42.5
 
 # Instala certificados (útil para conexões HTTPS nos nodes)
 USER root
